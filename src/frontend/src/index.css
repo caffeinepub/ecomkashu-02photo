@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Page background: very light cool gray #F7F8FB → oklch ~0.975 0.005 240 */
+    --background: 0.975 0.005 240;
+    /* Headlines: near-black #111317 → oklch ~0.18 0.005 240 */
+    --foreground: 0.18 0.005 240;
+
+    /* Cards: white #FFFFFF */
+    --card: 1 0 0;
+    --card-foreground: 0.18 0.005 240;
+
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.005 240;
+
+    /* Primary button: charcoal #111827 → oklch ~0.205 0.01 240 */
+    --primary: 0.205 0.01 240;
+    --primary-foreground: 0.99 0 0;
+
+    /* Secondary: white with border */
+    --secondary: 0.97 0.003 240;
+    --secondary-foreground: 0.205 0.01 240;
+
+    /* Muted: light gray */
+    --muted: 0.95 0.003 240;
+    --muted-foreground: 0.48 0.01 240;
+
+    /* Accent: pale cyan tint from hero gradient #DFF6FF */
+    --accent: 0.965 0.025 210;
+    --accent-foreground: 0.18 0.005 240;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    /* Border: #E5E7EB → oklch ~0.91 0.005 240 */
+    --border: 0.91 0.005 240;
+    --input: 0.91 0.005 240;
+    --ring: 0.5 0.01 240;
+
+    --chart-1: 0.646 0.222 41.116;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+
+    --sidebar: 1 0 0;
+    --sidebar-foreground: 0.18 0.005 240;
+    --sidebar-primary: 0.205 0.01 240;
+    --sidebar-primary-foreground: 0.99 0 0;
+    --sidebar-accent: 0.965 0.025 210;
+    --sidebar-accent-foreground: 0.18 0.005 240;
+    --sidebar-border: 0.91 0.005 240;
+    --sidebar-ring: 0.5 0.01 240;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      oklch(0.93 0.005 240) 25%,
+      oklch(0.97 0.005 240) 50%,
+      oklch(0.93 0.005 240) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .sparkle {
+    display: inline-block;
+    animation: sparkle-spin 3s ease-in-out infinite;
+  }
+
+  @keyframes sparkle-spin {
+    0%,
+    100% {
+      transform: scale(1) rotate(0deg);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.2) rotate(15deg);
+      opacity: 0.8;
+    }
+  }
+}
